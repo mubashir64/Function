@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditional File Downloads</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        .download-button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #00ff66; /* Preferred button color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: none; /* Initially hidden */
+        }
+        .download-button:hover {
+            background-color: #00cc52;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Available Links</h1>
+
+    <!-- Open URL buttons for specific files -->
+    <button class="download-button" id="download-file1" onclick="openUrl('https://anitoono.blogspot.com/2024/08/doraemon-nobitas-space-heroes.html?m=1')">Open Link 1</button>
+    <button class="download-button" id="download-file2" onclick="openUrl('https://anitoono.blogspot.com/2024/08/doraemon-nobita-all-movies-play-list.html?m=1')">Open Link 2</button>
+    <button class="download-button" id="download-file3" onclick="openUrl('https://anitoono.blogspot.com/2024/08/doraemon-nobita-chala-chand-pe.html?m=1')">Open Link 3</button>
+    <button class="download-button" id="download-file4" onclick="openUrl('https://anitoono.blogspot.com/2024/08/doraemon-nobita-chal-pada-antarctica.html?m=1')">Open Link 4</button>
+
+    <script>
+        // Function to parse URL query parameters
+        function getQueryParams() {
+            // Get the query string from the URL (e.g., "?file=file1")
+            const params = new URLSearchParams(window.location.search);
+            // Retrieve the value of the 'file' parameter
+            return params.get('file');
+        }
+
+        // Function to display the relevant button based on the query parameter
+        function showRelevantDownloads() {
+            const fileParam = getQueryParams(); // Get the file parameter
+
+            // Check the query parameter and show the corresponding button
+            if (fileParam === 'file1') {
+                document.getElementById('download-file1').style.display = 'inline-block';
+            } else if (fileParam === 'file2') {
+                document.getElementById('download-file2').style.display = 'inline-block';
+            } else if (fileParam === 'file3') {
+                document.getElementById('download-file3').style.display = 'inline-block';
+            } else if (fileParam === 'file4') {
+                document.getElementById('download-file4').style.display = 'inline-block';
+            } else {
+                alert("No links available based on the provided link.");
+            }
+        }
+
+        // Function to open the URL in a new tab
+        function openUrl(url) {
+            window.open(url, '_blank'); // Opens the URL in a new tab
+        }
+
+        // Call the function to show relevant links on page load
+        window.onload = showRelevantDownloads;
+    </script>
+
+</body>
+      </html>
